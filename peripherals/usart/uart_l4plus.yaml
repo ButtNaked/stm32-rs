@@ -1,0 +1,81 @@
+"USART*":
+  CR1:
+    _add:
+      FIFOEN:
+        description: FIFO mode enable
+        bitOffset: 29
+        bitWidth: 1
+        access: read-write
+      TXFEIE:
+        description: TXFIFO empty interrupt enable
+        bitOffset: 30
+        bitWidth: 1
+        access: read-write
+      RXFFIE:
+        description: RXFIFO Full interrupt enable
+        bitOffset: 31
+        bitWidth: 1
+        access: read-write
+    FIFOEN:
+      Disabled: [0, "FIFO mode is disabled"]
+      Enabled: [1, "FIFO mode is enabled"]
+    TXFEIE:
+      Disabled: [0, "Interrupt inhibited"]
+      Enabled: [1, "USART interrupt generated when TXFE = 1 in the USART_ISR register"]
+    RXFFIE:
+      Disabled: [0, "Interrupt inhibited"]
+      Enabled: [1, "USART interrupt generated when RXFF = 1 in the USART_ISR register"]
+
+  CR3:
+    _add:
+      TXFTIE:
+        description: TXFIFO threshold interrupt enable
+        bitOffset: 23
+        bitWidth: 1
+        access: read-write
+      TCBGTIE:
+        description: Transmission Complete before guard time, interrupt enable
+        bitOffset: 24
+        bitWidth: 1
+        access: read-write
+      RXFTCFG:
+        description: Receive FIFO threshold configuration
+        bitOffset: 25
+        bitWidth: 3
+        access: read-write
+      RXFTIE:
+        description: RXFIFO threshold interrupt enable
+        bitOffset: 28
+        bitWidth: 1
+        access: read-write
+      TXFTCFG:
+        description: TXFIFO threshold configuration
+        bitOffset: 29
+        bitWidth: 3
+        access: read-write
+
+    TXFTIE:
+      Disabled: [0, "Interrupt inhibited"]
+      Enabled: [1, "USART interrupt generated when TXFIFO reaches the threshold programmed in TXFTCFG"]
+    TCBGTIE:
+      Disabled: [0, "Interrupt inhibited"]
+      Enabled: [1, "USART interrupt generated whenever TCBGT=1 in the USART_ISR register"]
+    RXFTCFG:
+      Eighth:        [0b000, "Receive FIFO reaches 1/8 of its depth"]
+      Quarter:       [0b001, "Receive FIFO reaches 1/4 of its depth"]
+      Half:          [0b010, "Receive FIFO reaches 1/2 of its depth"]
+      ThreeQuarters: [0b011, "Receive FIFO reaches 3/4 of its depth"]
+      SevenEighth:   [0b100, "Receive FIFO reaches 7/8 of its depth"]
+      Full:          [0b101, "Receive FIFO becomes full"]
+    RXFTIE:
+      Disabled: [0, "Interrupt inhibited"]
+      Enabled: [1, "USART interrupt generated when Receive FIFO reaches the threshold programmed in RXFTCFG"]
+    TXFTCFG:
+      Eighth:        [0b000, "Transmit FIFO reaches 1/8 of its depth"]
+      Quarter:       [0b001, "Transmit FIFO reaches 1/4 of its depth"]
+      Half:          [0b010, "Transmit FIFO reaches 1/2 of its depth"]
+      ThreeQuarters: [0b011, "Transmit FIFO reaches 3/4 of its depth"]
+      SevenEighth:   [0b100, "Transmit FIFO reaches 7/8 of its depth"]
+      Empty:         [0b101, "Transmit FIFO becomes empty"]
+
+
